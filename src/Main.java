@@ -9,7 +9,7 @@ public class Main {
                 new PedidoEncomienda(102, "Calle Uno 2835", 8);
 
         Pedido express =
-                new PedidoExpress(103, "Pasaje Sur 3122", 6);
+                new PedidoExpress(103, "Pasaje Sur 1709", 6);
 
         System.out.println("===== PEDIDO COMIDA =====");
         comida.mostrarResumen();
