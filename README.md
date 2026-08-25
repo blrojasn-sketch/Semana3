@@ -1,30 +1,35 @@
- SpeedFast 
+## Semana 2 SpeedFast
 
-Descripción
+En esta actualización se transformó la clase Pedido en una clase abstracta para mejorar
+la reutilización del código y aplicar correctamente los principios de herencia.
 
-Este proyecto corresponde a la actividad formativa de la Semana 1, el objetivo es aplicar 
-los conceptos de Programación Orientada a Objetos (POO) en Java, específicamente:
+## Atributos comunes
 
+- idPedido
+- direccionEntrega
+- distanciaKm
+
+## Métodos
+
+- mostrarResumen()
+- calcularTiempoEntrega() (abstracto)
+
+## Implementaciones
+
+## PedidoComida
+Tiempo = 15 + (2 × distancia en km)
+
+## PedidoEncomienda
+Tiempo = 20 + (1.5 × distancia en km)
+
+## PedidoExpress
+Tiempo base = 10 minutos.
+Si la distancia supera los 5 km se agregan 5 minutos adicionales.
+
+## Conceptos aplicados
+
+- Clases abstractas
 - Herencia
 - Polimorfismo
-- Sobreescritura de métodos (Override)
-- Sobrecarga de métodos (Overload)
-
-El sistema representa una empresa de reparto llamada **SpeedFast**, que ofrece tres tipos de servicios:
-
-- Comida
-- Encomiendas
-- Compras Express
-
-Cada tipo de pedido posee criterios distintos para la asignación de repartidores.
-
-
-Estructura del Proyecto
-
-src/
-│
-├── Pedido.java
-├── PedidoComida.java
-├── PedidoEncomienda.java
-├── PedidoExpress.java
-└── Main.java
+- Sobrescritura de métodos
+- Encapsulamiento

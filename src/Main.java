@@ -2,23 +2,31 @@ public class Main {
 
     public static void main(String[] args) {
 
-        PedidoComida pedidoComida =
-                new PedidoComida(101, "Av. Central 123");
+        Pedido comida =
+                new PedidoComida(101, "Av. Trinidad 10165", 4);
 
-        PedidoEncomienda pedidoEncomienda =
-                new PedidoEncomienda(102, "Calle Norte 456");
+        Pedido encomienda =
+                new PedidoEncomienda(102, "Calle Uno 2835", 8);
 
-        PedidoExpress pedidoExpress =
-                new PedidoExpress(103, "Pasaje Sur 789");
+        Pedido express =
+                new PedidoExpress(103, "Pasaje Sur 3122", 6);
 
-        System.out.println("===== PRUEBA DE MÉTODOS SOBRESCRITOS =====");
-        pedidoComida.asignarRepartidor();
-        pedidoEncomienda.asignarRepartidor();
-        pedidoExpress.asignarRepartidor();
+        System.out.println("===== PEDIDO COMIDA =====");
+        comida.mostrarResumen();
+        System.out.println("Tiempo estimado: "
+                + comida.calcularTiempoEntrega()
+                + " minutos");
 
-        System.out.println("\n===== PRUEBA DE MÉTODOS SOBRECARGADOS =====");
-        pedidoComida.asignarRepartidor("Jorge Jerez");
-        pedidoEncomienda.asignarRepartidor("Sofia Flores");
-        pedidoExpress.asignarRepartidor("Erik Rojas");
+        System.out.println("\n===== PEDIDO ENCOMIENDA =====");
+        encomienda.mostrarResumen();
+        System.out.println("Tiempo estimado: "
+                + encomienda.calcularTiempoEntrega()
+                + " minutos");
+
+        System.out.println("\n===== PEDIDO EXPRESS =====");
+        express.mostrarResumen();
+        System.out.println("Tiempo estimado: "
+                + express.calcularTiempoEntrega()
+                + " minutos");
     }
 }
