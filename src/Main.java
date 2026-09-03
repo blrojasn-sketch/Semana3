@@ -2,31 +2,42 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Pedido comida =
-                new PedidoComida(101, "Av. Trinidad 10165", 4);
+        ControladorDeEnvios controlador =
+                new ControladorDeEnvios();
 
-        Pedido encomienda =
-                new PedidoEncomienda(102, "Calle Uno 2835", 8);
+        Pedido comida = new PedidoComida(
+                101,
+                "Damian Rojas",
+                "Av. Punta Arenas 1117"
+        );
 
-        Pedido express =
-                new PedidoExpress(103, "Pasaje Sur 1709", 6);
+        Pedido encomienda = new PedidoEncomienda(
+                102,
+                "Samantha Diaz",
+                "Bahia Catalina 1565"
+        );
 
-        System.out.println("===== PEDIDO COMIDA =====");
-        comida.mostrarResumen();
-        System.out.println("Tiempo estimado: "
-                + comida.calcularTiempoEntrega()
-                + " minutos");
+        Pedido express = new PedidoExpress(
+                103,
+                "Ayline Sandoval",
+                "Pasaje Cuatro 1007"
+        );
 
-        System.out.println("\n===== PEDIDO ENCOMIENDA =====");
-        encomienda.mostrarResumen();
-        System.out.println("Tiempo estimado: "
-                + encomienda.calcularTiempoEntrega()
-                + " minutos");
+        // Registrar pedidos
+        controlador.registrarPedido(comida);
+        controlador.registrarPedido(encomienda);
+        controlador.registrarPedido(express);
 
-        System.out.println("\n===== PEDIDO EXPRESS =====");
-        express.mostrarResumen();
-        System.out.println("Tiempo estimado: "
-                + express.calcularTiempoEntrega()
-                + " minutos");
+        // Asignación de repartidores
+        comida.asignarRepartidor();
+        encomienda.asignarRepartidor("Blas");
+        express.asignarRepartidor();
+
+        // Operaciones
+        controlador.despachar();
+        controlador.cancelar();
+
+        // Historial
+        controlador.verHistorial();
     }
 }

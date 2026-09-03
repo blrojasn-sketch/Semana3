@@ -1,35 +1,131 @@
-## Semana 2 SpeedFast
+# SpeedFast Semana 3
 
-En esta actualización se transformó la clase Pedido en una clase abstracta para mejorar
-la reutilización del código y aplicar correctamente los principios de herencia.
+## Descripción del Proyecto
 
-## Atributos comunes
+SpeedFast es una aplicación desarrollada en Java que simula la gestión de entregas para distintos tipos 
+de pedidos. El sistema permite administrar pedidos de comida, encomiendas y compras express, aplicando 
+los principios fundamentales de la Programación Orientada a Objetos: abstracción, polimorfismo e 
+interfaces.
+
+La solución está diseñada para facilitar la asignación de repartidores, calcular tiempos estimados de 
+entrega, despachar pedidos, cancelar envíos y mantener un historial.
+
+
+## Objetivo
+
+Desarrollar un sistema orientado a objetos que permita:
+
+- Gestionar distintos tipos de pedidos.
+- Asignar repartidores.
+- Calcular tiempos estimados de entrega.
+- Despachar pedidos.
+- Cancelar pedidos.
+- Consultar el historial de pedidos.
+- Aplicar principios de reutilización, escalabilidad y mantenibilidad.
+
+---
+
+# Principios de Programación Orientada a Objetos Aplicados
+
+## 1. Abstracción
+
+Se implementa mediante la clase abstracta `Pedido`, que reúne los atributos y comportamientos comunes de 
+todos los pedidos.
+
+### Atributos comunes
 
 - idPedido
-- direccionEntrega
-- distanciaKm
+- cliente
+- direccionDespacho
+- repartidor
 
-## Métodos
+### Métodos
 
 - mostrarResumen()
 - calcularTiempoEntrega() (abstracto)
+- asignarRepartidor() (abstracto)
+- asignarRepartidor(String nombre)
 
-## Implementaciones
+La abstracción permite definir una estructura base para todos los tipos de pedidos, evitando duplicación
+de código.
 
-## PedidoComida
-Tiempo = 15 + (2 × distancia en km)
+---
 
-## PedidoEncomienda
-Tiempo = 20 + (1.5 × distancia en km)
+## 2. Polimorfismo
 
-## PedidoExpress
-Tiempo base = 10 minutos.
-Si la distancia supera los 5 km se agregan 5 minutos adicionales.
+### Sobrescritura (Override)
 
-## Conceptos aplicados
+Las clases hijas:
 
-- Clases abstractas
-- Herencia
-- Polimorfismo
-- Sobrescritura de métodos
-- Encapsulamiento
+- PedidoComida
+- PedidoEncomienda
+- PedidoExpress
+
+sobrescriben los métodos:
+
+asignarRepartidor()
+calcularTiempoEntrega()
+
+### Estructura del Projecto
+
+SpeedFast
+│
+├── Pedido.java
+├── PedidoComida.java
+├── PedidoEncomienda.java
+├── PedidoExpress.java
+│
+├── Despachable.java
+├── Cancelable.java
+├── Rastreable.java
+│
+├── ControladorDeEnvios.java
+│
+├── Main.java
+│
+└── README.md
+
+### Diagrama De Clases
+
+                    <<abstract>>
+                         Pedido
+----------------------------------------------------------------
+- idPedido : int
+- cliente : String
+- direccionDespacho : String
+- repartidor : String
+----------------------------------------------------------------
++ mostrarResumen() : void
++ calcularTiempoEntrega() : int
++ asignarRepartidor() : void
++ asignarRepartidor(String nombre) : void
+----------------------------------------------------------------
+              ▲                  ▲                  ▲
+              │                  │                  │
+              │                  │                  │
+
+      PedidoComida      PedidoEncomienda      PedidoExpress
+
+----------------------------------------------------------------
+
+<<interface>> Despachable
++ despachar()
+
+<<interface>> Cancelable
++ cancelar()
+
+<<interface>> Rastreable
++ verHistorial()
+
+                        ▲
+                        │
+                        │
+             ControladorDeEnvios
+------------------------------------------------
+- historial : ArrayList<String>
+------------------------------------------------
++ registrarPedido()
++ despachar()
++ cancelar()
++ verHistorial()
+------------------------------------------------

@@ -1,11 +1,17 @@
 public class PedidoEncomienda extends Pedido {
 
-    public PedidoEncomienda(int idPedido, String direccionEntrega, double distanciaKm) {
-        super(idPedido, direccionEntrega, distanciaKm);
+    public PedidoEncomienda(int idPedido, String cliente, String direccionDespacho) {
+        super(idPedido, cliente, direccionDespacho);
+    }
+
+    @Override
+    public void asignarRepartidor() {
+        repartidor = "Erik";
+        System.out.println("Encomienda asignada a: " + repartidor);
     }
 
     @Override
     public int calcularTiempoEntrega() {
-        return (int)(20 + (distanciaKm * 1.5));
+        return 45;
     }
 }
